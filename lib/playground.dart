@@ -1,7 +1,5 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:long_shadow/fullscreen.dart';
 import 'package:long_shadow/long_shadow.dart';
 import 'package:sensors/sensors.dart';
 
@@ -45,36 +43,6 @@ class _LongShadowPlaygroundState extends State<LongShadowPlayground> {
     });
   }
 
-  void _showFullscreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute<Null>(
-        builder: (BuildContext context) {
-          return Scaffold(
-            body: GestureDetector(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: FullscreenLongShadow(
-                text: Text(
-                  _textController.text,
-                  style: TextStyle(
-                    fontSize: _fontSize,
-                    color: Colors.white,
-                  ),
-                ),
-                shadowColor: Colors.black.withOpacity(_shadowOpacity),
-                backgroundColor: Theme.of(context).primaryColor,
-                angle: _angle,
-              ),
-            ),
-          );
-        },
-        fullscreenDialog: true,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -92,34 +60,27 @@ class _LongShadowPlaygroundState extends State<LongShadowPlayground> {
                     decoration: InputDecoration(prefixText: "Text:"),
                   ),
                 ),
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        _showFullscreen();
-                      },
-                      child: Hero(
-                        tag: 'long-shadow',
-                        child: Container(
-                          width: 200,
-                          height: 200,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          child: Center(
-                            child: LongShadow(
-                              text: Text(
-                                _textController.text,
-                                style: TextStyle(
-                                  fontSize: _fontSize,
-                                  color: Colors.white,
-                                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(60, 20, 60, 0),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        child: Center(
+                          child: LongShadow(
+                            text: Text(
+                              _textController.text,
+                              style: TextStyle(
+                                fontSize: _fontSize,
+                                color: Colors.white,
                               ),
-                              color: Colors.black.withOpacity(_shadowOpacity),
-                              angle: _angle,
                             ),
+                            color: Colors.black.withOpacity(_shadowOpacity),
+                            angle: _angle,
                           ),
                         ),
                       ),

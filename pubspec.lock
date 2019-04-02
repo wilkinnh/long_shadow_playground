@@ -42,11 +42,9 @@ packages:
   long_shadow:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "0f5e526f5c61864462662f59536297b3ccc6a80f"
-      url: "git://github.com/wilkinnh/long_shadow.git"
-    source: git
+      path: "../long_shadow"
+      relative: true
+    source: path
     version: "1.0.0+1"
   matcher:
     dependency: transitive
